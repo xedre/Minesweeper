@@ -5,8 +5,9 @@ def generate(clicked, X, Y):
         map.append([])
         for y in range(Y):
             map[x].append(1)
-def mines():
-    random.randrange
+    for j in range(10):
+        mines = random.randrange
+
 
 
 
