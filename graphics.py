@@ -10,6 +10,7 @@ def start(screenSize):
     font = pygame.font.SysFont('arial', 25)
     return gameDisplay, clock, font
 
+
 def end():
     pygame.quit()
     exit()
