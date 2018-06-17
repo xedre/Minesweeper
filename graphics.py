@@ -18,8 +18,8 @@ def end():
     exit()
 
 
-def background(gameDisplay, colour=black):
-    gameDisplay.fill(colour)
+def background(display, colour=black):
+    display.fill(colour)
 
 
 def update(blockSize, Map, screen):
