@@ -25,10 +25,12 @@ def generate(clicked, X, Y, mines):
                         if X > x + i >= 0 and Y > y + j >= 0:
                             if mmap[x+i][y+i] != 0:
                                 mmap[x+i][y+i] += 1
-    print(mmap)
 
-
+    for x in mmap:
+        for y in x:
+            print(y, end="")
+        print()
 
 
 if __name__ == "__main__":
-    pass
+    generate((1, 1), 5, 10, 10)
