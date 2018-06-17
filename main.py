@@ -6,7 +6,7 @@ def generate(clicked, X, Y, mines):
     for x in range(X):
         mmap.append([])
         for y in range(Y):
-            mmap[x].append((False, 1))
+            mmap[x].append([False, 1])
 
     nearClicked = []
     for i in range(-1, 2):

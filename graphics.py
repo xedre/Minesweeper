@@ -25,5 +25,5 @@ def update(blockSize, Map, screen):
     background(screen)
     for x in range(len(Map)):
         for y in range(len(Map[x])):
-            screen.fill((0, Map[x][y] * 30, 0), rect=[x * (blockSize + 1) + 1, y * (blockSize + 1) + 1, blockSize, blockSize])
+            screen.fill((0, 0 if Map[x][y][0] is False else 128, 0), rect=[x * (blockSize + 1) + 1, y * (blockSize + 1) + 1, blockSize, blockSize])
     pygame.display.update()
