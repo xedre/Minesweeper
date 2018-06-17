@@ -1,6 +1,7 @@
 import random
 import graphics as gra
 
+
 def generate(clicked, X, Y, mines):
     mmap = []
     for x in range(X):
