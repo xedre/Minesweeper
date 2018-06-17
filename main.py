@@ -2,7 +2,18 @@ import random
 import graphics as gra
 
 
+def text_show(mmap, v=1):
+    print("#" + "#" * len(mmap))
+    for x in mmap:
+        print("#", end="")
+        for y in x:
+            print(y[v], end="")
+        print("#")
+    print("#" + "#" * len(mmap))
+
+
 def update_board(x, y, mmap):
+    print("apples")
     X = len(mmap)
     Y = len(mmap[0])
     if mmap[x][y][0] is False:
@@ -10,13 +21,15 @@ def update_board(x, y, mmap):
         if mmap[x][y][1] == 1:
             for i in range(-1, 2):
                 for j in range(-1, 2):
+                    print(1)
                     if X > x + i >= 0 and Y > y + j >= 0:
-                        if mmap[x+i][y+j] is False:
+                        print(2)
+                        if mmap[x + i][y + j][0] is False:
+                            print(3)
                             mmap[x + i][y + j][0] = True
-                            if mmap[x+i][y+j][1] == 1:
-                                mmap = update_board(x + i, y + j, mmap)
-
-    return mmap
+                            if mmap[x + i][y + j][1] == 1:
+                                print(x + i, y + j, sep=",")
+                                update_board(x + i, y + j, mmap)
 
 
 def generate(clicked, X, Y, mines):
@@ -45,12 +58,13 @@ def generate(clicked, X, Y, mines):
                                 mmap[x+i][y+j][1] += 1
                 break
 
-    mmap = update_board(clicked[0], clicked[1], mmap)
+    update_board(clicked[0], clicked[1], mmap)
     return mmap
 
 
 if __name__ == "__main__":
-    Map = generate((1, 1), 10, 10, 10)
+    Map = generate((1, 1), 10, 10, 5)
+    text_show(Map)
     window, clock, font = gra.start((220, 220))
     gra.update(20, Map, window)
     while True:
