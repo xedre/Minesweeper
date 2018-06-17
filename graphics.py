@@ -21,7 +21,7 @@ def background(gameDisplay, colour=black):
     gameDisplay.fill(colour)
 
 
-def Map(blockSize, Map, screen):
+def update(blockSize, Map, screen):
     background(screen)
     for x in range(len(Map)):
         for y in range(len(Map[x])):
