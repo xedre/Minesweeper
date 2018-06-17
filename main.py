@@ -2,11 +2,11 @@ import random
 
 
 def generate(clicked, X, Y, mines):
-    map = []
+    mmap = []
     for x in range(X):
-        map.append([])
+        mmap.append([])
         for y in range(Y):
-            map[x].append(1)
+            mmap[x].append(1)
 
     nearclicked = []
     for i in range(-1, 2):
