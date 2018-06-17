@@ -1,5 +1,5 @@
 import random
-
+import graphics as gra
 
 def generate(clicked, X, Y, mines):
     mmap = []
@@ -31,4 +31,8 @@ def generate(clicked, X, Y, mines):
 
 
 if __name__ == "__main__":
-    generate((1, 1), 10, 10, 10)
+    Map = generate((1, 1), 10, 10, 10)
+    window, clock, font = gra.start((200, 200))
+    gra.Map(20, Map, window)
+    while True:
+        pass
