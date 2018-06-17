@@ -33,7 +33,7 @@ def generate(clicked, X, Y, mines):
 
 if __name__ == "__main__":
     Map = generate((1, 1), 10, 10, 10)
-    window, clock, font = gra.start((200, 200))
+    window, clock, font = gra.start((220, 220))
     gra.update(20, Map, window)
     while True:
         pass
