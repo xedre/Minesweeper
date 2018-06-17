@@ -8,17 +8,17 @@ def generate(clicked, X, Y, mines):
         for y in range(Y):
             mmap[x].append(1)
 
-    nearclicked = []
+    nearClicked = []
     for i in range(-1, 2):
         for j in range(-1, 2):
             if X > clicked[0] + i >= 0 and Y > clicked[1] + j>= 0:
-                nearclicked.append((clicked[0] + i, clicked[1] + j))
+                nearClicked.append((clicked[0] + i, clicked[1] + j))
 
     for mine in range(mines):
         while True:
             x = random.randrange(X)
             y = random.randrange(Y)
-            if any((x, y) != x for x in nearclicked):
+            if any((x, y) != x for x in nearClicked):
                 mmap[x][y] = 0
                 for i in range(-1, 2):
                     for j in range(-1, 2):
