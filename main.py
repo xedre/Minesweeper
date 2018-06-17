@@ -2,6 +2,23 @@ import random
 import graphics as gra
 
 
+def update_board(x, y, mmap):
+    X = len(mmap)
+    Y = len(mmap[0])
+    if mmap[x][y][0] is False:
+        mmap[x][y][0] = True
+        if mmap[x][y][1] == 1:
+            for i in range(-1, 2):
+                for j in range(-1, 2):
+                    if X > x + i >= 0 and Y > y + j >= 0:
+                        if mmap[x+i][y+j] is False:
+                            mmap[x + i][y + j][0] = True
+                            if mmap[x+i][y+j][1] == 1:
+                                mmap = update_board(x + i, y + j, mmap)
+
+    return mmap
+
+
 def generate(clicked, X, Y, mines):
     mmap = []
     for x in range(X):
@@ -28,6 +45,7 @@ def generate(clicked, X, Y, mines):
                                 mmap[x+i][y+j][1] += 1
                 break
 
+    mmap = update_board(clicked[0], clicked[1], mmap)
     return mmap
 
 
