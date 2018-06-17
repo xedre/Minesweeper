@@ -18,6 +18,13 @@ def generate(clicked, X, Y, mines):
         while True:
             x = random.randrange(X)
             y = random.randrange(Y)
+            if any((x, y) != x for x in nearclicked):
+                mmap[x][y] = 0
+                for i in range(-1, 2):
+                    for j in range(-1, 2):
+                        if X > x + i >= 0 and Y > y + j >= 0:
+
+
 
 
 if __name__ == "__main__":
