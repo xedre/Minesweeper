@@ -25,7 +25,7 @@ def generate(clicked, X, Y, mines):
                         if X > x + i >= 0 and Y > y + j >= 0:
                             if mmap[x+i][y+j] != 0:
                                 mmap[x+i][y+j] += 1
-                                break
+                break
 
     for x in mmap:
         for y in x:
