@@ -3,10 +3,10 @@ import pygame
 black = (50, 50, 50)
 
 
-def start(screenSize):
+def start(screen_size):
     pygame.init()
     clock = pygame.time.Clock()
-    display = pygame.display.set_mode(screenSize)
+    display = pygame.display.set_mode(screen_size)
     pygame.display.set_caption("Minesweeper")
     pygame.display.update()
     font = pygame.font.SysFont('arial', 25)
@@ -22,9 +22,9 @@ def background(display, colour=black):
     display.fill(colour)
 
 
-def update(blockSize, Map, screen):
+def update(block_size, mine_map, screen):
     background(screen)
-    for x in range(len(Map)):
-        for y in range(len(Map[x])):
-            screen.fill((0, 0 if Map[x][y][0] is False else 128, 0), rect=[x * (blockSize + 1) + 1, y * (blockSize + 1) + 1, blockSize, blockSize])
+    for x in range(len(mine_map)):
+        for y in range(len(mine_map[x])):
+            screen.fill((0, 0 if mine_map[x][y][0] is False else 128, 0), rect=[x * (block_size + 1) + 1, y * (block_size + 1) + 1, block_size, block_size])
     pygame.display.update()
