@@ -14,8 +14,6 @@ def generate(clicked, X, Y, mines):
             if X > clicked[0] + i >= 0 and Y > clicked[1] + j>= 0:
                 nearClicked.append((clicked[0] + i, clicked[1] + j))
 
-    print(nearClicked)
-
     for mine in range(mines):
         while True:
             x = random.randrange(X)
@@ -29,11 +27,8 @@ def generate(clicked, X, Y, mines):
                                 mmap[x+i][y+j] += 1
                 break
 
-    for x in mmap:
-        for y in x:
-            print(y, end="")
-        print()
+    return mmap
 
 
 if __name__ == "__main__":
-    generate((1, 1), 5, 10, 10)
+    generate((1, 1), 10, 10, 10)
