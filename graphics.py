@@ -1,5 +1,6 @@
 import pygame
 
+black = (50, 50, 50)
 
 def start(screenSize):
     pygame.init()
@@ -14,3 +15,16 @@ def start(screenSize):
 def end():
     pygame.quit()
     exit()
+
+
+def background(gameDisplay, colour=black):
+    gameDisplay.fill(colour)
+
+
+def Map(blockSize, Map, screen):
+    background(screen)
+    for x in range(len(Map)):
+        for y in range(len(Map[x])):
+            if Map[x][y][0] <= 1:
+                screen.fill((0, Map[x][y][0] * 255, 0),
+                            rect=[x * (blockSize + 1) + 1, y * (blockSize + 1) + 1, blockSize, blockSize])
