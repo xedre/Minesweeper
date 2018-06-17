@@ -25,6 +25,5 @@ def Map(blockSize, Map, screen):
     background(screen)
     for x in range(len(Map)):
         for y in range(len(Map[x])):
-            if Map[x][y][0] <= 1:
-                screen.fill((0, Map[x][y][0] * 255, 0),
-                            rect=[x * (blockSize + 1) + 1, y * (blockSize + 1) + 1, blockSize, blockSize])
+            screen.fill((0, Map[x][y] * 30, 0), rect=[x * (blockSize + 1) + 1, y * (blockSize + 1) + 1, blockSize, blockSize])
+    pygame.display.update()
