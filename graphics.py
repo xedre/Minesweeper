@@ -2,6 +2,7 @@ import pygame
 
 black = (50, 50, 50)
 
+
 def start(screenSize):
     pygame.init()
     clock = pygame.time.Clock()
