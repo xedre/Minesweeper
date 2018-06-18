@@ -116,20 +116,27 @@ if __name__ == "__main__":
     gap = 1
     total_size = block_size + gap
 
-    Map = generate((1, 0), board_y, board_x, num_mines)
-    window_size = (total_size * board_x + 1, total_size * board_y + 1)
+    dummy_map = [[(False, 0) for y in range(board_y)] for x in range(board_x)]
+    window_size = (total_size * board_x + gap, total_size * board_y + gap)
     print(total_size, window_size, sep=", ")
     window, clock, font = gra.start(window_size)
-    gra.update(block_size, Map, window, font, gap)
+
+    gra.update(block_size, dummy_map, window, font, gap)
 
     events = []
     while True:
+        generated = False
         events = event(events)
         for x in events:
             if x == "LEFT":
                 pos = pygame.mouse.get_pos()
                 currentX, currentY = pos[0], pos[1]
                 if 0 <= currentX < window_size[0] and 0 <= currentY < window_size[1]:
+                    if generated is False:
+                        Map = generate((currentY // total_size, currentX // total_size), board_x, board_y, num_mines)
+                        generated = True
+                        gra.update(block_size, Map, window, font, gap)
+                        continue
                     update_board(currentY // total_size, currentX // total_size, Map)
                     gra.update(block_size, Map, window, font, gap)
                     if check_victory(Map, num_mines):
