@@ -36,6 +36,7 @@ def update_board(x, y, mmap):
                 # Repeat function for each neighbor that doesn't have a flag
                 update_board(r, c, mmap)
         elif mmap[x][y][1] == -1:
+            print("you lose")
             gra.end()
 
 
@@ -116,6 +117,8 @@ if __name__ == "__main__":
     gap = 1
     total_size = block_size + gap
 
+    generated = False
+
     dummy_map = [[(False, 0) for y in range(board_y)] for x in range(board_x)]
     window_size = (total_size * board_x + gap, total_size * board_y + gap)
     print(total_size, window_size, sep=", ")
@@ -125,7 +128,6 @@ if __name__ == "__main__":
 
     events = []
     while True:
-        generated = False
         events = event(events)
         for x in events:
             if x == "LEFT":
@@ -140,4 +142,5 @@ if __name__ == "__main__":
                     update_board(currentY // total_size, currentX // total_size, Map)
                     gra.update(block_size, Map, window, font, gap)
                     if check_victory(Map, num_mines):
+                        print("you win")
                         gra.end()
