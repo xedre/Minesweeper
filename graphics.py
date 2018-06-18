@@ -22,11 +22,6 @@ def background(display, colour=black):
     display.fill(colour)
 
 
-def list_remove(a, b):
-    print("\nError: Tried to remove " + str(a) + " from " + str(b) + " however " + str(a) +
-          " was not found.\n       This is probably fine.\n")
-
-
 def text(msg, colour, x, y, window, font):
     screen_text = font.render(msg, True, colour)
     window.blit(screen_text, [x, y])

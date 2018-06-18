@@ -37,6 +37,11 @@ def update_board(x, y, mmap):
                 update_board(r, c, mmap)
 
 
+def list_remove(a, b):
+    print("\nError: Tried to remove " + str(a) + " from " + str(b) + " however " + str(a) +
+          " was not found.\n       This is probably fine.\n")
+
+
 def event(current_events: object):
     for cevent in pygame.event.get():
         if cevent.type == pygame.QUIT:
