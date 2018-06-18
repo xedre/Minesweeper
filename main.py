@@ -47,7 +47,7 @@ def list_remove(a, b):
 def event(current_events: object):
     for cevent in pygame.event.get():
         if cevent.type == pygame.QUIT:
-            end()
+            gra.end()
         elif cevent.type == pygame.MOUSEBUTTONDOWN:
             if cevent.button == 1:
                 current_events.append("LEFT")
