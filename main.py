@@ -77,7 +77,7 @@ def generate(clicked, X, Y, mines):
         while True:
             x = random.randrange(X)
             y = random.randrange(Y)
-            if all((x, y) != z for z in near_clicked):
+            if all((x, y) != z for z in near_clicked) and mmap[x][y][1] != -1:
                 mmap[x][y][1] = -1
                 for i in range(-1, 2):
                     for j in range(-1, 2):
@@ -92,11 +92,10 @@ def generate(clicked, X, Y, mines):
 
 def check_victory(mmap, mines):
     total = 0
-    while total <= mines:
-        for x in mmap:
-            for y in x:
-                if y[0] is True:
-                    total += 1
+    for x in mmap:
+        for y in x:
+            if y[0] is False:
+                total += 1
     if total <= mines:
         return True
     else:
@@ -105,11 +104,15 @@ def check_victory(mmap, mines):
 
 if __name__ == "__main__":
 
-    num_mines = 0
+    num_mines = 10
     board_x = 10
-    board_y = 2
+    board_y = 10
 
-    block_size = 9
+    if board_x * board_y - 9 <= num_mines:
+        print("Board not big enough for number of mines")
+        exit()
+
+    block_size = 19
     gap = 1
     total_size = block_size + gap
 
@@ -126,8 +129,8 @@ if __name__ == "__main__":
             if x == "LEFT":
                 pos = pygame.mouse.get_pos()
                 currentX, currentY = pos[0], pos[1]
-                if 0 <= currentX < window_size[0] - 10 and 0 <= currentY < window_size[1] - 10:
-                    update_board(currentY // 21, currentX // 21, Map)
+                if 0 <= currentX < window_size[0] and 0 <= currentY < window_size[1]:
+                    update_board(currentY // total_size, currentX // total_size, Map)
                     gra.update(block_size, Map, window, font, gap)
                     if check_victory(Map, num_mines):
                         gra.end()
