@@ -105,18 +105,19 @@ def check_victory(mmap, mines):
 
 if __name__ == "__main__":
 
-    num_mines = 10
+    num_mines = 0
     board_x = 10
-    board_y = 10
+    board_y = 2
 
-    block_size = 19
+    block_size = 9
     gap = 1
     total_size = block_size + gap
 
-    Map = generate((1, 0), board_x, board_y, num_mines)
+    Map = generate((1, 0), board_y, board_x, num_mines)
     window_size = (total_size * board_x + 1, total_size * board_y + 1)
+    print(total_size, window_size, sep=", ")
     window, clock, font = gra.start(window_size)
-    gra.update(total_size, Map, window, font)
+    gra.update(block_size, Map, window, font, gap)
 
     events = []
     while True:
@@ -127,6 +128,6 @@ if __name__ == "__main__":
                 currentX, currentY = pos[0], pos[1]
                 if 0 <= currentX < window_size[0] - 10 and 0 <= currentY < window_size[1] - 10:
                     update_board(currentY // 21, currentX // 21, Map)
-                    gra.update(20, Map, window, font)
+                    gra.update(block_size, Map, window, font, gap)
                     if check_victory(Map, num_mines):
                         gra.end()

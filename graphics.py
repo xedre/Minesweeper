@@ -27,19 +27,19 @@ def text(msg, colour, x, y, window, font):
     window.blit(screen_text, [x, y])
 
 
-def update(block_size, mine_map, screen, font):
+def update(block_size, mine_map, screen, font, gap):
     background(screen)
     for x in range(len(mine_map)):
         for y in range(len(mine_map[x])):
             if mine_map[x][y][0] is False:
-                screen.fill((0, 0, 0), rect=[y * (block_size + 1) + 1, x * (block_size + 1) + 1, block_size, block_size])
+                screen.fill((0, 0, 0), rect=[y * (block_size + gap) + gap, x * (block_size + gap) + gap, block_size, block_size])
             else:
-                screen.fill((150, 150, 150), rect=[y * (block_size + 1) + 1, x * (block_size + 1) + 1, block_size, block_size])
+                screen.fill((150, 150, 150), rect=[y * (block_size + gap) + gap, x * (block_size + gap) + gap, block_size, block_size])
                 if mine_map[x][y][1] == 0:
                     show = ""
                 elif mine_map[x][y][1] == -2:
                     show = "F"
                 else:
                     show = str(mine_map[x][y][1])
-                text(show, black, y * (block_size + 1) + 5, x * (block_size + 1) + 2, screen, font)
+                text(show, black, y * (block_size + gap) + 5, x * (block_size + gap) + 2, screen, font)
     pygame.display.update()
