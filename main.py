@@ -90,9 +90,24 @@ def generate(clicked, X, Y, mines):
     return mmap
 
 
+def check_victory(mmap, mines):
+    total = 0
+    while total <= mines:
+        for x in mmap:
+            for y in x:
+                if y[0] is True:
+                    total += 1
+    if total <= mines:
+        return True
+    else:
+        return False
+
+
 if __name__ == "__main__":
-    Map = generate((1, 0), 10, 10, 10)
-    text_show(Map)
+
+    num_mines = 10
+
+    Map = generate((1, 0), 10, 10, num_mines)
     window_size = (220, 220)
     window, clock, font = gra.start(window_size)
     gra.update(20, Map, window, font)
@@ -107,3 +122,5 @@ if __name__ == "__main__":
                 if 0 <= currentX < window_size[0] - 10 and 0 <= currentY < window_size[1] - 10:
                     update_board(currentY // 21, currentX // 21, Map)
                     gra.update(20, Map, window, font)
+                    if check_victory(Map, num_mines):
+                        gra.end()
