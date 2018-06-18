@@ -2,6 +2,21 @@ import random
 import graphics as gra
 
 
+def neighbors(x, y, mmap):
+    out = []
+    w = len(mmap)
+    h = len(mmap[0])
+
+    for i in range(-1, 2):
+        for j in range(-1, 2):
+            if i == 0 and j == 0:
+                continue
+            elif w > x + i >= 0 and h > y + j >= 0:
+                out.append((x + i, y + j))
+
+    return out
+
+
 def text_show(mmap, v=1):
     print("##" + "#" * len(mmap))
     for x in mmap:
@@ -13,17 +28,12 @@ def text_show(mmap, v=1):
 
 
 def update_board(x, y, mmap):
-    X = len(mmap)
-    Y = len(mmap[0])
     if mmap[x][y][0] is False:
         mmap[x][y][0] = True
         if mmap[x][y][1] == 1:
-            for i in range(-1, 2):
-                for j in range(-1, 2):
-                    if X > x + i >= 0 and Y > y + j >= 0:
-                        if mmap[x + i][y + j][0] is False:
-                            if mmap[x + i][y + j][1] == 1:
-                                update_board(x + i, y + j, mmap)
+            for r, c in neighbors(x, y, mmap):
+                # Repeat function for each neighbor that doesn't have a flag
+                update_board(r, c, mmap)
 
 
 def generate(clicked, X, Y, mines):
@@ -61,6 +71,5 @@ if __name__ == "__main__":
     text_show(Map)
     window, clock, font = gra.start((220, 220))
     gra.update(20, Map, window)
-    print(Map)
     while True:
         pass

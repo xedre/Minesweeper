@@ -26,5 +26,5 @@ def update(block_size, mine_map, screen):
     background(screen)
     for x in range(len(mine_map)):
         for y in range(len(mine_map[x])):
-            screen.fill((0, 0 if mine_map[x][y][0] is False else 128, 0), rect=[x * (block_size + 1) + 1, y * (block_size + 1) + 1, block_size, block_size])
+            screen.fill((0, 0 if mine_map[x][y][0] is False else 128, 0), rect=[y * (block_size + 1) + 1, x * (block_size + 1) + 1, block_size, block_size])
     pygame.display.update()
