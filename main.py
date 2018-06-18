@@ -69,7 +69,10 @@ def generate(clicked, X, Y, mines):
 if __name__ == "__main__":
     Map = generate((1, 0), 10, 10, 10)
     text_show(Map)
+
     window, clock, font = gra.start((220, 220))
     gra.update(20, Map, window)
+
+    events = []
     while True:
-        pass
+        events = gra.events(events)

@@ -22,6 +22,26 @@ def background(display, colour=black):
     display.fill(colour)
 
 
+def listRemove(a, b):
+    print("\nError: Tried to remove " + str(a) + " from " + str(b) + " however " + str(a) +
+          " was not found.\n       This is probably fine.\n")
+
+
+def events(current_events: object):
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            end()
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1:
+                current_events.append("LEFT")
+        elif event.type == pygame.MOUSEBUTTONUP:
+            if event.button == 1:
+                try:
+                    current_events.remove("LEFT")
+                except ValueError:
+                    listRemove("LEFT", "currentEvents")
+    return current_events
+
 def update(block_size, mine_map, screen):
     background(screen)
     for x in range(len(mine_map)):
