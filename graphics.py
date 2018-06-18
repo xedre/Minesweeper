@@ -22,7 +22,7 @@ def background(display, colour=black):
     display.fill(colour)
 
 
-def listRemove(a, b):
+def list_remove(a, b):
     print("\nError: Tried to remove " + str(a) + " from " + str(b) + " however " + str(a) +
           " was not found.\n       This is probably fine.\n")
 
@@ -39,7 +39,7 @@ def events(current_events: object):
                 try:
                     current_events.remove("LEFT")
                 except ValueError:
-                    listRemove("LEFT", "currentEvents")
+                    list_remove("LEFT", "currentEvents")
     return current_events
 
 def update(block_size, mine_map, screen):
