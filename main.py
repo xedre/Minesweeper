@@ -35,6 +35,8 @@ def update_board(x, y, mmap):
             for r, c in neighbors(x, y, mmap):
                 # Repeat function for each neighbor that doesn't have a flag
                 update_board(r, c, mmap)
+        elif mmap[x][y][1] == -1:
+            gra.end()
 
 
 def list_remove(a, b):
