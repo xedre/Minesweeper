@@ -37,15 +37,15 @@ def update_board(x, y, mmap):
                 update_board(r, c, mmap)
 
 
-def events(current_events: object):
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+def event(current_events: object):
+    for cevent in pygame.event.get():
+        if cevent.type == pygame.QUIT:
             end()
-        elif event.type == pygame.MOUSEBUTTONDOWN:
-            if event.button == 1:
+        elif cevent.type == pygame.MOUSEBUTTONDOWN:
+            if cevent.button == 1:
                 current_events.append("LEFT")
-        elif event.type == pygame.MOUSEBUTTONUP:
-            if event.button == 1:
+        elif cevent.type == pygame.MOUSEBUTTONUP:
+            if cevent.button == 1:
                 try:
                     current_events.remove("LEFT")
                 except ValueError:
@@ -92,7 +92,7 @@ if __name__ == "__main__":
 
     events = []
     while True:
-        events = gra.events(events)
+        events = event(events)
         for x in events:
             if x == "LEFT":
                 pos = pygame.mouse.get_pos()
