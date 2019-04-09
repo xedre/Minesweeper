@@ -1,2 +1,11 @@
 # Minesweeper
-A small Minesweeper project I am making for no reason at all
+
+...
+
+# hm
+
+How did you get here? 
+  You shouldn't be here...
+
+
+I should be doing something more productive
